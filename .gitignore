@@ -1,0 +1,5 @@
+.bowerrc
+composer.lock
+
+# composer vendor dir
+/vendor
