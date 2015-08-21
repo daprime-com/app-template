@@ -13,8 +13,11 @@ defined('YII_DEBUG') or define('YII_DEBUG', true);
 require(__DIR__ . '/vendor/autoload.php');
 require(__DIR__ . '/vendor/yiisoft/yii2/Yii.php');
 
-$config = require(__DIR__ . '/config/console.php');
+Yii::setAlias('@root', $rootPath); //root alias is required for builder to work
 
-$application = new yii\console\Application($config);
+$configBuilder = new \yii\configbuilder\ConfigBuilder();
+(new yii\web\Application($configBuilder->getWebConfig()))->run();
+
+$application = new yii\console\Application($configBuilder->getConsoleConfig()));
 $exitCode = $application->run();
 exit($exitCode);
